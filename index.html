@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Finance Analyzer</div>
+      <div class="main-title">Investment screener</div>
+      <div class="main-sub">Evaluate companies against your investment strategy</div>
+    </div>
+    <div class="header-badge">2026</div>
+  </div>
+  <div id="formPanel">
+
+    <div class="field">
+      <label class="label" for="coInput">Company name</label>
+      <input type="text" id="coInput" placeholder="e.g. Stripe, Shopify, OpenAI" />
+    </div>
+
+    <div class="field">
+      <label class="label" for="ctxInput">Context (optional)</label>
+      <textarea id="ctxInput" placeholder="Paste a company description, pitch summary, or any notes..."></textarea>
+    </div>
+
+    <div class="field">
+      <label class="label">Investment strategy</label>
+      <div class="tags">
+        <span class="tag" data-v="private equity">Private equity</span>
+        <span class="tag" data-v="venture capital">Venture capital</span>
+        <span class="tag" data-v="private credit">Private credit</span>
+        <span class="tag" data-v="real estate">Real estate</span>
+      </div>
+    </div>
+
+    <button class="run-btn" id="runBtn" onclick="runScreen()">Evaluate company</button>
+    <div class="err" id="errMsg"></div>
+
+  </div>
+  <div class="status" id="statusBar">
+    <div class="spin"></div>
+    <span id="statusTxt">Analyzing investment fit...</span>
+  </div>
+  <div class="results" id="resultsPanel">
+    <div class="sec-label">Executive summary</div>
+    <div class="sum-card fade-up">
+      <div class="sum-top">
+        <div>
+          <div class="co-name" id="rName"></div>
+          <div class="co-type" id="rType"></div>
+        </div>
+        <div class="fit-badge" id="rBadge"></div>
+      </div>
+      <div class="sum-body" id="rSummary"></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sec-label">Dimension scores</div>
+    <div class="scores-grid" id="rScores"></div>
+
+    <div class="divider"></div>
+
+    <div class="sec-label">Investment memo</div>
+    <div class="memo-card" id="rMemo"></div>
+    <div class="divider"></div>
+    <div class="sec-label">Decision</div>
+    <div class="gate-card">
+      <div class="gate-header">
+        <div class="gate-pip"></div>
+        <span class="gate-title">Analyst decision required</span>
+      </div>
+      <div class="gate-desc" id="rGate"></div>
+      <div id="gateBtns" class="gate-btns">
+        <button class="gb gb-adv" onclick="advanceToMeeting()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 8h12M9 3l5 5-5 5"/>
+          </svg>
+          Advance to meeting
+        </button>
+        <button class="gb gb-pass" onclick="decide('pass')">Pass on opportunity</button>
+      </div>
+      <div class="decision-banner" id="decBanner"></div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn" onclick="exportPDF()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="1" width="10" height="14" rx="1.5"/>
+          <path d="M5 5h4M5 8h4M5 11h2"/>
+          <path d="M10 1v4h4"/>
+        </svg>
+        Export as PDF
+      </button>
+      <button class="action-btn" onclick="resetApp()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 8a6 6 0 1 0 1.5-4M2 2v4h4"/>
+        </svg>
+        New evaluation
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
