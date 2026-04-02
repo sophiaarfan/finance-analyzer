@@ -1,7 +1,8 @@
 # Finance Analyzer
 
 A web app that evaluates companies for investment fit using the Anthropic API. Enter a company name, pick your investment strategy, and get a structured memo with scores, red flags, and key questions + a one-click PDF export.
-[![Live Demo](https://img.shields.io/badge/demo-live-pink?style=flat-square)](https://finance-analyzer-nu5ywlskw-sophiaarfans-projects.vercel.app/)
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-F26A8D?style=for-the-badge&logo=google-chrome&logoColor=white)](https://finance-analyzer-nu5ywlskw-sophiaarfans-projects.vercel.app/)
 
 ## Stack
 | Layer | Tech |
